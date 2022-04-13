@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <filter id="huqsx07lna" color-interpolation-filters="auto">
+            <feColorMatrix in="SourceGraphic" values="0 0 0 0 0.731516 0 0 0 0 0.731516 0 0 0 0 0.731516 0 0 0 1.000000 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g filter="url(#huqsx07lna)" transform="translate(-16.000000, -114.000000) translate(0.000000, 90.000000)">
+                <g>
+                    <g fill="#000" fill-rule="nonzero">
+                        <path d="M14.28 22v-5.388H1.71V22H0v-9.445c0-.469.383-.849.854-.849h1.104V.85C1.958.38 2.34 0 2.811 0h10.376c.472 0 .855.38.855.849v10.857h1.104c.226 0 .444.089.604.248.16.16.25.376.25.6V22h-1.72zm0-7.086v-1.51H1.71v1.508l12.571.002zm-1.956-3.208v-2.85H3.665v2.85h8.659zm0-4.55V1.697H3.665v5.459h8.659z" transform="translate(16.000000, 24.000000) translate(4.000000, 1.000000)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
