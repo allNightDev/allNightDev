@@ -16,7 +16,8 @@
             "program": "lib/env/dev.dart",
             "args": [
                 "--flavor",
-                "dev"
+                "dev",
+                "--no-sound-null-safety"
             ]
         },
         {
@@ -26,7 +27,8 @@
             "program": "lib/env/prod.dart",
             "args": [
                 "--flavor",
-                "prod"
+                "prod",
+                "--no-sound-null-safety"
             ]
         },
     ]

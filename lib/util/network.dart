@@ -2,7 +2,9 @@
 
 import 'dart:convert';
 
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:intl/intl.dart';
 import 'dart:io' show Platform;
@@ -12,12 +14,13 @@ import '../env/env.dart';
 
 class Network {
   final Dio _dio = Dio(BaseOptions(baseUrl: Env.baseUrl));
+  final CookieJar cookieJar = CookieJar();
 
   // 로그인 후
   Key? loginKey;
 
   // 기본 iv
-  IV iv = IV.fromUtf8("1234567802070106");
+  IV iv = IV.fromUtf8(AppConstants.ivKey);
 
   // 기본 데이터
   final Map<String, dynamic> _initData = {
@@ -45,6 +48,9 @@ class Network {
 
     // 요청데이터 암호화
     Encrypted encrypted = encrypter.encrypt(jsonEncode(_requestData).toString(), iv: iv);
+
+    // 쿠키 유지
+    _dio.interceptors.add(CookieManager(cookieJar));
 
     // 요청
     Response response = await _dio.post(url, queryParameters: {"data": encrypted.base64, "cid": "LOCAL"});

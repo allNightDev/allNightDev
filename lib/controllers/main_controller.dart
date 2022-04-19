@@ -6,12 +6,14 @@ import 'package:studycube/controllers/app_controller.dart';
 
 import '../constants/app_api.dart';
 import '../model/banner_model.dart';
+import '../model/center_model.dart';
 import '../model/filter_model.dart';
 import '../util/network.dart';
 
 class MainController extends GetConnect with Network {
   AppController appController = Get.find();
 
+  final centers = <CenterModel>[].obs;
   final banners = <BannerModel>[].obs;
   final sorting = FilterModel().obs;
 
@@ -19,7 +21,7 @@ class MainController extends GetConnect with Network {
   void onInit() {
     super.onInit();
     _getBanner();
-    // getCenters();
+    getCenters();
   }
 
   _getBanner() {
@@ -33,9 +35,9 @@ class MainController extends GetConnect with Network {
 
   // 센터 갖고오기
   getCenters() async {
-    final _data = {"listPerPage": 10, "pageNo": 1, "searchCenterTypeCd": "01", "orderBySort": "ASC"};
+    final _data = {"listPerPage": 10, "pageNo": 1, "searchCenterTypeCd": "01", "orderBySort": "ASC", "orderBy": ""};
 
-    final _result = await postRequest(AppApi.centerList, data: _data, akey: appController.akey);
-    print(_result);
+    final _result = await postRequest(AppApi.centerList, data: _data);
+    centers.addAll(_result['result_list'].map<CenterModel>((_item) => CenterModel.fromJson(_item)).toList());
   }
 }

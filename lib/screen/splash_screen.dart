@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      if (mounted) appController.autoLogin();
+      if (mounted) appController.appStart();
     });
     super.initState();
   }

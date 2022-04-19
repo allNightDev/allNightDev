@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_conditional_assignment, unnecessary_null_comparison
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../constants/app_constants.dart';
 import '../main.dart';
@@ -29,6 +30,7 @@ class Env {
   // 앱 실행
   Future<void> run() async {
     WidgetsFlutterBinding.ensureInitialized();
+    await GetStorage.init();
     await configureDependencies();
     runApp(MyApp());
   }

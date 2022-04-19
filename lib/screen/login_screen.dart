@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             icon: Icon(CustomIcons.btn_menu_lock, color: Colors.white, size: 24),
                             label: "로그인",
                             bgColor: AppColors.pointblue,
-                            onClick: () => appController.login(_tel, _password),
+                            onClick: () => appController.login(_tel, _password, _autoLogin),
                           ),
                           SizedBox(height: 5),
                           LoginScreenButton(

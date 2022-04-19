@@ -40,6 +40,12 @@ dependencies:
   encrypt: ^5.0.1
   badges: ^2.0.2
   carousel_slider: ^4.0.0
+  cookie_jar: ^3.0.1
+  dio_cookie_manager: ^2.0.0
+  uuid: ^3.0.6
+  get_storage: ^2.0.3
+  flutter_latlong: ^1.0.3
+  location: ^2.5.4
 
 dev_dependencies:
   flutter_test:

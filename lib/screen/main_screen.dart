@@ -6,6 +6,7 @@ import '../components/common/custom_icons_icons.dart';
 import '../components/main/main_banner.dart';
 import '../components/main/main_card.dart';
 import '../components/main/main_filter.dart';
+import '../controllers/app_controller.dart';
 import '../controllers/main_controller.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,17 +18,18 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final ScrollController _controller = ScrollController();
+  final MainController mainController = Get.find();
+  final AppController appController = Get.find();
   bool bottomShow = false;
 
   @override
   void initState() {
     super.initState();
-
-    Get.lazyPut(() => MainController());
-
     _controller.addListener(() {
       setState(() => bottomShow = _controller.offset > 10.0);
     });
+
+    appController.getLocation();
   }
 
   @override
@@ -39,28 +41,30 @@ class _MainScreenState extends State<MainScreen> {
         title: Image.asset('assets/images/logo.png', width: 154, height: 24),
         centerTitle: false,
       ),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
-              controller: _controller,
-              child: Column(
-                children: [
-                  MainBanner(),
-                  MainFilter(),
-                  Column(children: List.generate(10, (index) => MainCard())),
-                ],
+      body: Obx(
+        () => SafeArea(
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                physics: ClampingScrollPhysics(),
+                controller: _controller,
+                child: Column(
+                  children: [
+                    MainBanner(),
+                    MainFilter(),
+                    Column(children: mainController.centers.map((_center) => MainCard(center: _center)).toList()),
+                  ],
+                ),
               ),
-            ),
-            if (bottomShow)
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 6.0,
-                child: _BottomFunc(onTap: () => _controller.animateTo(0.0, duration: Duration(milliseconds: 300), curve: Curves.easeInOut)),
-              ),
-          ],
+              if (bottomShow)
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 6.0,
+                  child: _BottomFunc(onTap: () => _controller.animateTo(0.0, duration: Duration(milliseconds: 300), curve: Curves.easeInOut)),
+                ),
+            ],
+          ),
         ),
       ),
     );

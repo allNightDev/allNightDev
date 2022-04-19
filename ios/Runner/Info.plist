@@ -43,5 +43,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>근처 스터디카페를 찾는데 사용됩니다.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>근처 스터디카페를 찾는데 사용됩니다.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>근처 스터디카페를 찾는데 사용됩니다.</string>
 </dict>
 </plist>
