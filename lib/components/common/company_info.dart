@@ -25,13 +25,11 @@ class CompanyInfo extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(16.0),
-                      child: Image.asset(
-                        'assets/images/logo.png',
-                        fit: BoxFit.fitWidth,
-                      ),
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      width: 110,
                     ),
                   ),
                   Expanded(

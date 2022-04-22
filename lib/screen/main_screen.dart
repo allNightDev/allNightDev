@@ -8,6 +8,7 @@ import '../components/main/main_card.dart';
 import '../components/main/main_filter.dart';
 import '../controllers/app_controller.dart';
 import '../controllers/main_controller.dart';
+import 'menu_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: Icon(CustomIcons.btn_menu)),
+        leading: IconButton(onPressed: () => Get.to(MenuScreen()), icon: Icon(CustomIcons.btn_menu)),
         actions: const [AppBarActions()],
         title: Image.asset('assets/images/logo.png', width: 154, height: 24),
         centerTitle: false,

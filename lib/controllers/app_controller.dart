@@ -9,6 +9,7 @@ import 'package:location/location.dart';
 import 'package:uuid/uuid.dart';
 
 import '../constants/app_api.dart';
+import '../model/user_model.dart';
 import '../screen/login_screen.dart';
 import '../screen/main_screen.dart';
 import '../util/network.dart';
@@ -25,6 +26,9 @@ class AppController extends GetConnect with Network {
 
   // 앱에서 사용하는 정보
   LatLng? appLocation;
+
+  // 상태관리
+  final userInfo = Rxn<UserModel>();
 
   // 앱 시작
   appStart() async {
@@ -64,13 +68,14 @@ class AppController extends GetConnect with Network {
       }
 
       akey = _result['akey'];
-      userInfo();
+      getUserInfo();
     }
   }
 
   // 유저정보 갖고오기
-  userInfo() async {
-    await postRequest(AppApi.userInfo, akey: akey);
+  getUserInfo() async {
+    final _result = await postRequest(AppApi.userInfo, akey: akey);
+    userInfo.value = UserModel.fromJson(_result);
     Get.to(MainScreen());
   }
 

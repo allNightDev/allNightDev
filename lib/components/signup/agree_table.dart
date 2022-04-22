@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/app_colors.dart';
+import '../common/app_check_box.dart';
 import '../common/custom_icons_icons.dart';
 
 class AgreeTable extends StatefulWidget {
@@ -19,7 +20,7 @@ class _AgreeTableState extends State<AgreeTable> {
       decoration: BoxDecoration(border: Border.all(width: 1.0, color: AppColors.colorBackground), color: Colors.white),
       padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
       child: Column(children: [
-        _CheckBox(
+        AppCheckBox(
           child: Text(
             "전체동의",
             style: TextStyle(fontWeight: FontWeight.w700, fontSize: 12.0),
@@ -28,7 +29,7 @@ class _AgreeTableState extends State<AgreeTable> {
           check: true,
         ),
         Divider(height: 17.0),
-        _CheckBox(
+        AppCheckBox(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -40,7 +41,7 @@ class _AgreeTableState extends State<AgreeTable> {
           check: true,
         ),
         SizedBox(height: 8.0),
-        _CheckBox(
+        AppCheckBox(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -52,7 +53,7 @@ class _AgreeTableState extends State<AgreeTable> {
           check: true,
         ),
         SizedBox(height: 8.0),
-        _CheckBox(
+        AppCheckBox(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -64,43 +65,6 @@ class _AgreeTableState extends State<AgreeTable> {
           check: true,
         ),
       ]),
-    );
-  }
-}
-
-class _CheckBox extends StatelessWidget {
-  const _CheckBox({Key? key, this.child, this.check = false, required this.onChange}) : super(key: key);
-
-  final Widget? child;
-  final bool check;
-  final Function() onChange;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        InkWell(
-          onTap: onChange,
-          child: Container(
-            width: 18.0,
-            height: 18.0,
-            margin: EdgeInsets.only(right: 6),
-            decoration: BoxDecoration(
-              border: Border.all(width: 1.0, color: Theme.of(context).dividerColor),
-            ),
-            child: Center(
-              child: check
-                  ? Icon(
-                      CustomIcons.btn_checkbox_check,
-                      color: Theme.of(context).primaryColor,
-                      size: 17.0,
-                    )
-                  : SizedBox(),
-            ),
-          ),
-        ),
-        Expanded(child: child ?? SizedBox()),
-      ],
     );
   }
 }

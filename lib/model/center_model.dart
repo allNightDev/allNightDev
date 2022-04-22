@@ -59,6 +59,16 @@ class CenterModel {
         centerFixseatEndTime = json['centerFixseatEndTime'] ?? "",
         seatDayEndTime = json['seatDayEndTime'] ?? "";
 
+  LatLng? get centerLantLng {
+    if (centerAddrPos.isEmpty) return null;
+
+    try {
+      return LatLng(double.parse(centerAddrPos.split("|")[0]), double.parse(centerAddrPos.split("|")[1]));
+    } catch (e) {
+      return null;
+    }
+  }
+
   String? get getDistance {
     if (centerAddrPos.isEmpty) return null;
 

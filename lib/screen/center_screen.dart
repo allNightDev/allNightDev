@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../components/center/center_banner.dart';
 import '../components/center/center_basic_info.dart';
+import '../components/center/center_bottom_nav.dart';
 import '../components/center/center_intro.dart';
 import '../components/center/center_map.dart';
 import '../components/center/center_name.dart';
@@ -43,6 +44,7 @@ class _CenterScreenState extends State<CenterScreen> {
         actions: const [AppBarActions()],
         centerTitle: false,
       ),
+      bottomNavigationBar: CenterBottomNav(),
       body: Obx(
         () => SafeArea(
           child: centerController.centerInfo.value == null
@@ -64,7 +66,7 @@ class _CenterScreenState extends State<CenterScreen> {
                           ],
                         ),
                       ),
-                      CenterMap(),
+                      if (centerController.centerInfo.value?.centerLantLng != null) CenterMap(),
                     ],
                   ),
                 ),

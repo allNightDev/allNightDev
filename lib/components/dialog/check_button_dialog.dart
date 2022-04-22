@@ -18,6 +18,7 @@ class _CheckButtonDialogState extends State<CheckButtonDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
+      insetPadding: EdgeInsets.all(14),
       backgroundColor: Colors.white.withOpacity(0.6),
       child: IntrinsicHeight(
         child: Container(

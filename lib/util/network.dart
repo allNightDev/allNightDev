@@ -63,6 +63,7 @@ class Network {
 
       return jsonDecode(decrypted);
     } else {
+      print(response.realUri);
       print(response.statusCode);
       print(response.statusMessage);
       return null;
